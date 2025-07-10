@@ -33,18 +33,19 @@
     <p>All UI – No Wallet, No Payments</p>
   </header>
 
+  <!-- ✅ Aadhar Manual Generator Section -->
   <main style="padding: 30px;">
-    <div class="container">
-      <div class="card" style="max-width: 400px; margin: auto;">
-        <div class="card-body">
-          <h5 class="card-title">Free Feature</h5>
-          <p class="card-text">Use this section to describe your feature.</p>
-          <a href="#" class="btn btn-primary">Submit</a>
+    <div class="container" style="display: flex; justify-content: center;">
+      <div class="card" style="width: 350px;">
+        <div class="card-body text-center">
+          <h5 class="card-title">Aadhar Manual</h5>
+          <p class="card-text">Click to generate a free Aadhar number.</p>
+          <button onclick="generateAadhar()" class="btn btn-primary">Generate Aadhar</button>
+          <div id="output" style="margin-top: 20px; font-weight: bold; font-size: 20px;"></div>
         </div>
       </div>
     </div>
   </main>
-  <!-- ✅ UI END -->
 
   <!-- ✅ JS Libraries (Order matters) -->
   <script src="assets/vendor/jquery/jquery.min.js"></script>
@@ -57,5 +58,16 @@
   <!-- ✅ Custom JS -->
   <script src="assets/js/custom.js"></script>
   <script src="assets/js/theme.min.js"></script>
+
+  <!-- ✅ Aadhar Generator Script -->
+  <script>
+    function generateAadhar() {
+      let num = "";
+      for (let i = 0; i < 12; i++) {
+        num += Math.floor(Math.random() * 10);
+      }
+      document.getElementById("output").innerText = "Your Aadhar Number:\n" + num;
+    }
+  </script>
 </body>
 </html>
