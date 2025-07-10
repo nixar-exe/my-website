@@ -275,8 +275,8 @@ html, body {
       <div class="card-body">
         <div class="form-group">
           <label>Select Language:</label>
-          <select class="form-control">
-            <option>Select Language</option>
+          <select class="form-control" id="languageSelect" onchange="fillRegional()">
+<option>Select Language</option>
             <option>Hindi</option>
             <option>Marathi</option>
             <option>Tamil</option>
@@ -284,19 +284,19 @@ html, body {
         </div>
         <div class="form-group">
           <label>Name (Regional):</label>
-          <input type="text" class="form-control" value="Auto fetched when Language Select" readonly>
+          <input type="text" class="form-control" id="regName" value="" readonly>
         </div>
         <div class="form-group">
           <label>Gender (Regional):</label>
-          <input type="text" class="form-control" value="Auto fetched when Language Select" readonly>
+          <input type="text" class="form-control" id="regGender" value="" readonly>
         </div>
         <div class="form-group">
           <label>DOB (Regional):</label>
-          <input type="text" class="form-control" value="Auto fetched when Language Select" readonly>
+          <input type="text" class="form-control" id="regDOB" value="" readonly>
         </div>
         <div class="form-group">
           <label>Full Address (Regional):</label>
-          <textarea class="form-control" rows="3" readonly>Auto fetched when Language Select</textarea>
+          <textarea class="form-control" rows="3" id="regAddress" readonly></textarea>
         </div>
       </div>
     </div>
@@ -337,5 +337,45 @@ html, body {
   <!-- ✅ Custom JS -->
   <script src="assets/js/custom.js"></script>
   <script src="assets/js/theme.min.js"></script>
+
+
+<script>
+  function fillRegional() {
+    const lang = document.getElementById("languageSelect").value;
+
+    const data = {
+      Hindi: {
+        name: "नाम",
+        gender: "लिंग",
+        dob: "जन्म तिथि",
+        address: "पूरा पता"
+      },
+      Marathi: {
+        name: "नाव",
+        gender: "लिंग",
+        dob: "जन्मदिन",
+        address: "संपूर्ण पत्ता"
+      },
+      Tamil: {
+        name: "பெயர்",
+        gender: "பாலினம்",
+        dob: "பிறந்த தேதி",
+        address: "முழு முகவரி"
+      }
+    };
+
+    if (data[lang]) {
+      document.getElementById("regName").value = data[lang].name;
+      document.getElementById("regGender").value = data[lang].gender;
+      document.getElementById("regDOB").value = data[lang].dob;
+      document.getElementById("regAddress").value = data[lang].address;
+    } else {
+      document.getElementById("regName").value = "";
+      document.getElementById("regGender").value = "";
+      document.getElementById("regDOB").value = "";
+      document.getElementById("regAddress").value = "";
+    }
+  }
+</script>
 
 </body></html>
